@@ -1,20 +1,25 @@
-import { data } from "autoprefixer";
+
 import { useEffect } from "react";
 import { useState } from "react";
+import Blog from "./blog";
 
 
-const Blogs = () => {
+const Blogs = ({handleAddBookMark}) => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     fetch('blog.json')
       .then(res => res.json())
     .then(data=>setBlogs(data))
   },[])
-console.log(blogs)
+
   return (
-    <div>
+    <div className="w-4/6">
+      <h3 className="p-3">Blogs:{blogs.length}</h3>
+      {blogs.map(blog => <Blog key={blogs.id} blog={blog} handleAddBookMark={handleAddBookMark}></Blog>)}
+     
       
     </div>
+    
   );
 };
 
