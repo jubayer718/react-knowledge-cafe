@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 
 const Blog = ({ blog,handleAddBookMark,handleReadingTime }) => {
- const {cover_img,title,author_img,author,posted_date,reading_time}=blog
+ const {id,cover_img,title,author_img,author,posted_date,reading_time}=blog
 
   return (
     <div className="m-5">
@@ -26,7 +26,7 @@ const Blog = ({ blog,handleAddBookMark,handleReadingTime }) => {
         </div>
  </div>
       <button className="underline text-purple-900 font-semibold"
-        onClick={()=>handleReadingTime(reading_time)}>Mark as read</button>
+        onClick={()=>handleReadingTime(reading_time,id)}>Mark as read</button>
 
     </div>
   );

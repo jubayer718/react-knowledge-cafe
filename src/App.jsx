@@ -11,14 +11,32 @@ function App() {
 
   const [readingTime, setReadingTime] = useState((0));
 
-  const handleReadingTime = (time) => {
-    const newReadingTime = readingTime + time
-    setReadingTime(newReadingTime);
+  const handleReadingTime = (time,id) => {
+    const newBookmark = bookMarks.filter(p => p.id !== id)
+    setBookmarks(newBookmark)
+
+    // const remainingBookmarks = bookMarks.find((p) => p.id == id)
+    // if (remainingBookmarks) {
+    //   const newReadingTime = readingTime + time
+    //   setReadingTime(newReadingTime);
+     
+    // } 
+       const newReadingTime = readingTime + time
+      setReadingTime(newReadingTime);
+    
   }
 
+
   const handleAddBookMark = (blog) => {
-    const newBookmark = [...bookMarks, blog]
-    setBookmarks(newBookmark)
+    const isExist = bookMarks.find((p) => p.id === blog.id);
+ 
+    if (isExist) {
+      alert('already existed')
+    } else {
+      
+      const newBookmark = [...bookMarks, blog]
+      setBookmarks(newBookmark)
+    }
   }
 
   return (
