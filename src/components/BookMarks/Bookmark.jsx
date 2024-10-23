@@ -1,7 +1,7 @@
-import React from 'react';
+import PropTypes from "prop-types";
 
 const Bookmark = ({ bookMark }) => {
-  const {author,posted_date,title}=bookMark
+  const {title}=bookMark
   return (
     <div>
       <h3 className='bg-slate-100 rounded-xl p-5 text-xl font-bold mb-3'>
@@ -10,5 +10,7 @@ const Bookmark = ({ bookMark }) => {
     </div>
   );
 };
-
+Bookmark.propTypes = {
+  bookMark: PropTypes.object.isRequired
+}
 export default Bookmark;

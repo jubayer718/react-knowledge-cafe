@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 
-const Blog = ({ blog,handleAddBookMark }) => {
+const Blog = ({ blog,handleAddBookMark,handleReadingTime }) => {
  const {cover_img,title,author_img,author,posted_date,reading_time}=blog
 
   return (
@@ -24,8 +24,9 @@ const Blog = ({ blog,handleAddBookMark }) => {
             <p className="text-end">{reading_time} minute</p>
         <button onClick={()=>handleAddBookMark(blog)}><img className="w-5" src="https://img.icons8.com/?size=48&id=82461&format=png" alt="" /></button>
         </div>
-      
  </div>
+      <button className="underline text-purple-900 font-semibold"
+        onClick={()=>handleReadingTime(reading_time)}>Mark as read</button>
 
     </div>
   );
@@ -33,6 +34,7 @@ const Blog = ({ blog,handleAddBookMark }) => {
 
 Blog.propTypes = {
    blog: PropTypes.object.isRequired,
-  handleAddBookMark: PropTypes.func
+  handleAddBookMark: PropTypes.func.isRequired,
+  handleReadingTime: PropTypes.func
 }
 export default Blog;

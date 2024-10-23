@@ -4,10 +4,17 @@ import './App.css'
 import Blogs from './components/Blog/Blogs'
 import Bookmarks from './components/BookMarks/Bookmarks'
 import Header from './components/Header/Header'
-import PropTypes from 'prop-types'
+
 
 function App() {
   const [bookMarks, setBookmarks] = useState([]);
+
+  const [readingTime, setReadingTime] = useState((0));
+
+  const handleReadingTime = (time) => {
+    const newReadingTime = readingTime + time
+    setReadingTime(newReadingTime);
+  }
 
   const handleAddBookMark = (blog) => {
     const newBookmark = [...bookMarks, blog]
@@ -19,8 +26,8 @@ function App() {
   
       <Header></Header>
       <div className='flex justify-between'>
-      <Blogs handleAddBookMark={handleAddBookMark}></Blogs>
-        <Bookmarks bookMarks={bookMarks}></Bookmarks>
+      <Blogs handleAddBookMark={handleAddBookMark} handleReadingTime={handleReadingTime}></Blogs>
+        <Bookmarks bookMarks={bookMarks} readingTime={readingTime}></Bookmarks>
       </div>
    
     </>
